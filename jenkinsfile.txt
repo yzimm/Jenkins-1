@@ -1,0 +1,41 @@
+pipeline {
+    agent { 
+        node {
+            label 'docker-agent-python'
+            }
+      }
+    triggers {
+        pollSCM '*/5 * * * *'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building.."
+                sh '''
+                   #!/usr/bin/env python3
+				 print("Devops is great")
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                sh '''
+				   #!/usr/bin/env python3
+                python3 main.py
+                python3 main.py --name=yaki
+                '''
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo 'Deliver....'
+                sh '''
+				#!/usr/bin/env python3
+				python3 main.py
+                echo "doing delivery stuff.."
+                '''
+            }
+        }
+    }
+}
