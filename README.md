@@ -3,6 +3,8 @@
 > docker build -t myjenkins-blueocean:2.332.3-1 .
 2. Creating network called "Jenkins"
    > docker network create Jenkins
+   
+   
 3.Running container in UBUNTU 20.0.0.4
   > docker run --name jenkins-blueocean --restart=on-failure --detach \
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
@@ -20,6 +22,7 @@ docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
  
  
 5.inserting the code that we get in section 4
+
 
 
 6. Installing Jenkins CLI on ubuntu 20.0.04
