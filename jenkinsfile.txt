@@ -3,6 +3,9 @@ pipeline {
         node {
             label 'docker-agent-python'
             }
+        tools {
+	 java 'Java 1.8'
+        python 'Python 3'
       }
     triggers {
         pollSCM '*/5 * * * *'
@@ -11,8 +14,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
-                sh '''
-                   #!/usr/bin/env python3
+               sh 'javac HelloWorld.java'
+               sh 'python3 main.py'
 				 print("Devops is great")
                 '''
             }
