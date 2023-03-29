@@ -11,6 +11,9 @@
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:2.332.3-1
+  
+  
+  
 4.Get password for Jenkins web.
 docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
  Accessing http://localhost:8080/
